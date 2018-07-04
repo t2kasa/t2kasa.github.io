@@ -1,0 +1,39 @@
+entries:
+- title: home
+  folders: 
+
+  - title: papers
+    output: web
+    folderitems:
+
+    - title: "StackGAN: Text to Photo-realistic Image Synthesis with Stacked Generative Adversarial Networks"
+      url: /stackgan.html
+      output: web
+
+  - title: others
+    output: web
+    folderitems:
+
+    - title: Kernelized Stein Discrepancy
+      url: /ksd.html
+      output: web
+    
+    - title: リプシッツ連続 (Lipschitz continuity)
+      url: /lipschitz-continuity.html
+      output: web
+
+  - title: presentations
+    output: web
+    folderitems:
+
+      - title: "Online Learning Rate Adaptation with Hypergradient Descent - 2018/05/26 ICLR2018読み会@PFN"
+        url: /online-learning-rate-adaptation-with-hypergradient-descent.html
+        output: web
+      
+      - title: "Extension & Triggerを活用しよう - 2018/06/09 Chainer Meetup #07 ~Chainer 3歳記念イベント~"
+        url: /extension-and-trigger.html
+        output: web
+
+      - title: "Domain Adaptive Faster R-CNN for Object Detection in the Wild - 2018/07/01 第46回 コンピュータビジョン勉強会＠関東 CVPR2018読み会(前編)"
+        url: /domain-adaptive-faster-rcnn-for-object-detection-in-the-wild.html
+        output: web
