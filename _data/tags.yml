@@ -4,6 +4,7 @@
 allowed-tags:
   - Work In Progress
   - GAN
+  - Domain Adaptation
   # - getting_started
   # - content_types
   # - navigation

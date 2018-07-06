@@ -9,6 +9,10 @@ entries:
     - title: "StackGAN: Text to Photo-realistic Image Synthesis with Stacked Generative Adversarial Networks"
       url: /stackgan.html
       output: web
+    
+    - title: "Unsupervised Domain Adaptation by Backpropagation"
+      url: /unsupervised-domain-adaptation-by-backpropagation.html
+      output: web
 
   - title: others
     output: web
