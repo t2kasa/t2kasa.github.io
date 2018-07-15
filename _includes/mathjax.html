@@ -9,6 +9,14 @@ MathJax.Hub.Config({
         processEscapes: true
     },
     "HTML-CSS": { fonts: ["TeX"] },
-    TeX: { equationNumbers: { autoNumber: "AMS" } }
+    TeX: {
+        Macros: {
+            argmax: ["\\mathop{\\rm arg\\,max}\\limits"],
+            argmin: ["\\mathop{\\rm arg\\,min}\\limits"]
+        },
+        equationNumbers: { 
+            autoNumber: "AMS" 
+        }
+    }
 });
 </script>

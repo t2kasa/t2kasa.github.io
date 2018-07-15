@@ -13,6 +13,10 @@ entries:
     - title: "Unsupervised Domain Adaptation by Backpropagation"
       url: /unsupervised-domain-adaptation-by-backpropagation.html
       output: web
+    
+    - title: "Born-Again Neural Networks"
+      url: /born-again-neural-networks.html
+      output: web
 
   - title: others
     output: web

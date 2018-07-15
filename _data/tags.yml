@@ -5,6 +5,8 @@ allowed-tags:
   - Work In Progress
   - GAN
   - Domain Adaptation
+  - ICML2018
+  - Knowledge Distillation
   # - getting_started
   # - content_types
   # - navigation
