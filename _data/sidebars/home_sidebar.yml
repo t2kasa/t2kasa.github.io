@@ -17,6 +17,14 @@ entries:
     - title: "Born-Again Neural Networks"
       url: /born-again-neural-networks.html
       output: web
+    
+  - title: アルゴリズムとデータ構造
+    output: web
+    folderitems:
+
+    - title: 分割数
+      url: partition.html
+      output: web
 
   - title: others
     output: web
