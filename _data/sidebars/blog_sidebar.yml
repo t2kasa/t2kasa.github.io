@@ -6,6 +6,6 @@ entries:
     output: web
     folderitems:
 
-      - title: "ABC069 C - 4-adjacent"
+      - title: "ABC069 C - 4-adjacent (300点)"
         url: /2018-09-11-abc069c.html
         output: web
