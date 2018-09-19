@@ -11,7 +11,7 @@ entries:
       output: web
     
     - title: "Unsupervised Domain Adaptation by Backpropagation"
-      url: /unsupervised-domain-adaptation-by-backpropagation.html
+      url: grl.html
       output: web
     
     - title: "Born-Again Neural Networks"

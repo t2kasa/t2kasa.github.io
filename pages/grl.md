@@ -2,7 +2,7 @@
 title: Unsupervised Domain Adaptation by Backpropagation
 tags: [Domain Adaptation]
 sidebar: home_sidebar
-permalink: unsupervised-domain-adaptation-by-backpropagation.html
+permalink: grl.html
 ---
 
 ## 概要
