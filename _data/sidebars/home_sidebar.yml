@@ -13,7 +13,11 @@ entries:
     - title: "Unsupervised Domain Adaptation by Backpropagation"
       url: grl.html
       output: web
-    
+
+    - title: "Partial Adversarial Domain Adaptation"
+      url: pada.html
+      output: web
+
     - title: "Born-Again Neural Networks"
       url: /born-again-neural-networks.html
       output: web
