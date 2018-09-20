@@ -21,7 +21,11 @@ entries:
     - title: "Born-Again Neural Networks"
       url: /born-again-neural-networks.html
       output: web
-    
+
+    - title: "Explaining and Harnessing Adversarial Examples"
+      url: fgsm.html
+      output: web
+
   - title: アルゴリズムとデータ構造
     output: web
     folderitems:

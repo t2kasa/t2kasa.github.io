@@ -7,9 +7,11 @@ allowed-tags:
   - Domain Adaptation
   - ICML2018
   - ECCV2018
+  - ICLR2015
   - Knowledge Distillation
   - アルゴリズムとデータ構造
   - 二分探索
+  - Adversarial Example
   # - getting_started
   # - content_types
   # - navigation
