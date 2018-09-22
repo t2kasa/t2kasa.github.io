@@ -22,7 +22,7 @@ entries:
       url: /born-again-neural-networks.html
       output: web
 
-    - title: "Explaining and Harnessing Adversarial Examples"
+    - title: "Explaining and Harnessing Adversarial Examples (ICLR2015)"
       url: fgsm.html
       output: web
 

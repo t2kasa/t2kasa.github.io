@@ -1,5 +1,5 @@
 ---
-title: "Explaining and Harnessing Adversarial Examples"
+title: "Explaining and Harnessing Adversarial Examples (ICLR2015)"
 last_updated: Sep 20, 2018
 tags: [Adversarial Example, Work In Progress, ICLR2015]
 sidebar: home_sidebar
@@ -145,3 +145,8 @@ $(\mathrm{ii}) \quad y = -1$のとき
     \bfeta = \epsilon \mathrm{sign}(\nabla_{\bfx} L(\bftheta, \bfx, y)) = - \epsilon \mathrm{sign}(\bfw)
 \end{align}
 である．
+
+
+## References
+
+* [Ian Goodfellow, Jon Shlens, and Christian Szegedy. Explaining and Harnessing Adversarial Examples. ICLR2015](https://arxiv.org/abs/1412.6572)
