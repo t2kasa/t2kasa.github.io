@@ -1,5 +1,5 @@
 ---
-title: "Partial Adversarial Domain Adaptation"
+title: "Partial Adversarial Domain Adaptation (ECCV2018)"
 last_updated: Sep 19, 2018
 tags: [Domain Adaptation, ECCV2018]
 sidebar: home_sidebar
@@ -83,7 +83,7 @@ $\bgamma$の意図するところは以下の通りである．
 PADAのアーキテクチャを以下に示す．
 [GRL](grl.html){:target="_blank"}のアーキテクチャと比較すると$\bgamma$が変更点になっていることが明確に分かる．
 
-![pada_arch](images/pada/pada_arch.png)
+![pada_arch](../images/pada/pada_arch.png)
 
 ## References
 

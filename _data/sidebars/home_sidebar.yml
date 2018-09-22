@@ -14,7 +14,7 @@ entries:
       url: grl.html
       output: web
 
-    - title: "Partial Adversarial Domain Adaptation"
+    - title: "Partial Adversarial Domain Adaptation (ECCV2018)"
       url: pada.html
       output: web
 
