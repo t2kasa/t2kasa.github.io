@@ -12,6 +12,7 @@ allowed-tags:
   - アルゴリズムとデータ構造
   - 二分探索
   - Adversarial Example
+  - "Kernelized Stein Discrepancy"
   # - getting_started
   # - content_types
   # - navigation
