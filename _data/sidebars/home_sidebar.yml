@@ -38,8 +38,8 @@ entries:
     output: web
     folderitems:
 
-    - title: Kernelized Stein Discrepancy
-      url: /ksd.html
+    - title: "A Short Introduction to Kernelized Stein Discrepancy"
+      url: a-short-introduction-to-kernelized-stein-discrepancy.html
       output: web
     
     - title: リプシッツ連続 (Lipschitz continuity)

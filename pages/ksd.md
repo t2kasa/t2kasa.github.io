@@ -1,21 +1,22 @@
 ---
-title: Kernelized Stein Discrepancy
-tags: [Work In Progress]
+title: "A Short Introduction to Kernelized Stein Discrepancy"
+tags: ["Kernelized Stein Discrepancy"]
+last_updated: Oct 27, 2018
 sidebar: home_sidebar
-permalink: ksd.html
+permalink: a-short-introduction-to-kernelized-stein-discrepancy.html
 ---
 
 \begin{equation}
 \newcommand{\calA}{\mathcal{A}}
 \newcommand{\calF}{\mathcal{F}}
 \newcommand{\calH}{\mathcal{H}}
-\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbE}{\mathbb{E}} \nonumber
 \end{equation}
 
 [A Short Introduction to Kernelized Stein Discrepancy](http://www.cs.dartmouth.edu/~qliu/PDF/ksd_short.pdf)  
-Kernelized Stein Discrepancyについて現状わかっている範囲でメモ。
+Kernelized Stein Discrepancyについて分かっている範囲でメモ。
 
-### Stein's Identity
+## Stein's Identity
 
 微分可能な確率密度関数$p(x)$と関数$f(x) \in \mathbb{R}$があり，$\lim_{\parallel x \parallel \rightarrow \infty} p(x)f(x) = 0$のとき
 
@@ -28,7 +29,7 @@ Kernelized Stein Discrepancyについて現状わかっている範囲でメモ�
 以降，表記を容易にするため，$\calA_p = f(x) \nabla_x \log p(x) + \nabla_x f(x)$とする．
 $\calA_p$は重要な性質として線形性があり，$\calA_p(f + g) = \calA_p f + \calA_p g$とできる．
 
-### Stein Discrepancy
+## Stein Discrepancy
 
 $\calA_p f(x)$を$p(x)$での期待値ではなく，異なる確率分布$q(x)$で期待値をとることを考える．
 
@@ -53,7 +54,7 @@ $f$については最もStein's identityから遠ざかるようにすること�
 \sqrt{S(q, p)} = \max_{f \in \calF} \bbE_{x \sim q} \left[\calA_p f(x) \right]
 \end{align}
 
-### Solving the optimization
+## Solving the optimization
 
 既知の基底関数$f_i(x)$の集合と未知の係数$w_i$の線形結合で$f(x)$を表すとする．
 即ち，$f(x) = \sum_i w_i f_i(x)$．すると，$\calA_p$と$\bbE$は線形性を持つので
@@ -104,7 +105,7 @@ $\calH$に関連付けられた正定値カーネルを$k(x, x^{\prime})$とす�
 
 ---
 
-#### Proof of Equation (1)
+### Proof of Equation (1)
 
 \begin{align}
 \mathbb{E}\_{x \sim p} \left[f(x) \nabla_x \log p(x) + \nabla_x f(x) \right]
