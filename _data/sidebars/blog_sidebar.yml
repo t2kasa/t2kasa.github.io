@@ -7,11 +7,11 @@ entries:
     folderitems:
 
       - title: "ABC069 C - 4-adjacent (400点)"
-        url: /2018-09-11-abc069c.html
+        url: 2018-09-11-abc069c.html
         output: web
       
       - title: "ABC063 D - Widespread (400点)"
-        url: /2018-09-12-abc063d.html
+        url: 2018-09-12-abc063d.html
         output: web
       
       - title: "モンテカルロフィルタを試す (Monte Carlo Filter)"
