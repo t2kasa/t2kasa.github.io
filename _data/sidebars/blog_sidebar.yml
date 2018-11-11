@@ -13,3 +13,7 @@ entries:
       - title: "ABC063 D - Widespread (400点)"
         url: /2018-09-12-abc063d.html
         output: web
+      
+      - title: "モンテカルロフィルタを試す (Monte Carlo Filter)"
+        url: 2018-11-11-monte-carlo-filter.html
+        output: web
