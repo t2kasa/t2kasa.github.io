@@ -6,19 +6,19 @@ tags: []
 ---
 
 \begin{align}
+\newcommand{\bt}{\mathbf{t}}
 \newcommand{\bx}{\mathbf{x}}
 \newcommand{\by}{\mathbf{y}}
-\newcommand{\bv}{\mathbf{v}}
 \newcommand{\bw}{\mathbf{w}}
+\newcommand{\bQ}{\mathbf{Q}}
 \newcommand{\balpha}{\boldsymbol{\alpha}}
 \newcommand{\bSigma}{\boldsymbol{\Sigma}} \nonumber
 \end{align}
 
 
-SVMを復習しよう．ふとそう思った．今回は最も基本的なケースであるハードマージンかつ線形のSVMについて書く．これは2クラス分類問題において，ある線形判別関数$g(\bw)$によって線形分離可能であることを仮定している．
+SVMを復習しよう．ふとそう思った．今回は最も基本的なケースであるハードマージンかつ線形のSVMについて書く．これは2クラス分類問題において，ある線形判別関数$g(\bx)$によって線形分離可能であることを仮定している．
 
-さて，線形SVMは$g(\bx)$から各クラスに属するサンプルの中で，最も近いサンプルへの距離を最大化するように学習する．
-ここからは数式を中心として話を進める．まず2クラスのラベルを$t \in \left\\{+1, -1\right\\}$とする．$g(\bx)$はパラメータ$\bw, b$を用いると$g(\bx) = \bx^T \bw + b$と表現できる．
+さて，線形SVMは$g(\bx)$から各クラスに属するサンプルの中で，最も近いサンプルへの距離を最大化するように学習する．ここからは数式を中心として話を進める．まず2クラスのラベルを$t \in \left\\{+1, -1\right\\}$とする．$g(\bx)$はパラメータ$\bw, b$を用いると$g(\bx) = \bw^T \bx + b$と表現できる．
 
 ### 問題設定と定式化
 
@@ -31,7 +31,7 @@ $g(\bx)$から最も近いサンプルに対する距離は
 \min_{i} \frac{|\bw^T \bx_i + b|}{\\|\bw\\|}
 \end{align}
 
-で表される．一方で$g(x)$から2つのクラスに対して最も近いサンプルに対する距離の和は最大化されるようなパラメータを求めたい．つまり
+で表される．一方で$g(\bx)$から2つのクラスに対して最も近いサンプルに対する距離の和は最大化されるようなパラメータを求めたい．つまり
 \begin{align}
 \argmax_{\bw, b} \left[ \min_{i}  \frac{2|\bw^T \bx_i + b|}{\\|\bw\\|} \right] = \argmax_{\bw, b} \left[ \min_{i} \frac{|\bw^T \bx_i + b|}{\\|\bw\\|} \right]
 \end{align}
@@ -56,19 +56,22 @@ i \in \left\\{1, \ldots, n \right\\}, \; t_i (\bw^T \bx_i + b) \geq 1
 \argmin_{\bw, b} \frac{1}{2} \\|\bw\\|^2
 \end{align}
 
-### 最適解の導出
+### ラグランジュ関数の導出
 
-ラグランジュの未定乗数法を用いる．ラグランジュ乗数$\balpha = [\alpha_1, \ldots, \alpha_n]^T \geq \mathbf{0} \; (i = 1, \ldots, N)$を導入するとラグランジュ関数$L(\bw, b, \balpha)$は
+ラグランジュの未定乗数法を用いる．ラグランジュ乗数$\balpha = [\alpha_1, \ldots, \alpha_n]^T \geq \mathbf{0} \; (i = 1, \ldots, n)$を導入するとラグランジュ関数$L(\bw, b, \balpha)$は
 \begin{align}
 L(\bw, b, \balpha) = \frac{1}{2} \\|\bw\\|^2 - \sum_{i = 1}^n \alpha_i \left\\{t_i (\bw^T \bx_i + b) - 1 \right\\}
 \end{align}
-となる．$\bw, b$については最小化，$\balpha$については最大化することになる（詳しくは「ラグランジュ双対問題」などで検索）．つまり$\bw, b$については$\frac{\partial L(\bw, b, \balpha)}{\partial \bw} = \mathbf{0}, \frac{\partial L(\bw, b, \balpha)}{\partial b} = 0$を考えれば良い．
+となる．$\bw, b$については最小化，$\balpha$については最大化することになる（詳しくは「ラグランジュ双対問題」などで検索）．ここでKKT条件により，以下が成り立つ．
 \begin{align}
 \frac{\partial L(\bw, b, \balpha)}{\partial \bw}
 =& \bw - \sum_{i = 1}^n \alpha_i t_i \bx_i = \mathbf{0} \quad \therefore \bw
 = \sum_{i = 1}^n \alpha_i t_i \bx_i \newline
 \frac{\partial L(\bw, b, \balpha)}{\partial b} 
-=& 0 - \sum_{i = 1}^n \alpha_i t_i = 0 \quad \therefore 0 = \sum_{i = 1}^n \alpha_i t_i
+=& 0 - \sum_{i = 1}^n \alpha_i t_i = 0 \quad \therefore 0 = \sum_{i = 1}^n \alpha_i t_i \newline
+\alpha_i \geq & 0 \newline
+t_i (\bw^T \bx_i + b) - 1 \geq & 0 \newline
+\alpha_i \left\\{t_i (\bw^T \bx_i + b) - 1 \right\\} =& 0
 \end{align}
 これらを用いてラグランジュ関数を変形する．
 \begin{align}
@@ -77,7 +80,42 @@ L(\balpha)
 &= \sum_{i = 1}^n \alpha_i - \frac{1}{2} \bw^T \bw = \sum_{i = 1}^n \alpha_i - \frac{1}{2} \left(\sum_{i = 1}^n \alpha_i t_i \bx_i \right)^T \left(\sum_{j = 1}^n \alpha_j t_j \bx_j \right) \newline
 &= \sum_{i = 1}^n \alpha_i - \frac{1}{2} \sum_{i = 1}^n \sum_{j = 1}^n \alpha_i \alpha_j t_i t_j \bx_i^T \bx_j
 \end{align}
+ちなみに，ラグランジュ係数を用いると$g(\bx)$は
+\begin{align}
+g(\bx) = \bw^T \bx + b = \left(\sum_{i = 1}^n \alpha_i t_i \bx_i^T \right) \bx + b = \sum_{i = 1}^n \alpha_i t_i \bx_i^T \bx + b
+\end{align}
+と変形される．
 
-### 実装例
+---
 
-最急降下法で学習してみる．
+さて，以上でラグランジュ関数の導出は出来た．ここからは実際に最適化問題として解いてみよう．  
+
+まず，導出したラグランジュ関数が$\balpha$についての二次計画問題となっていることが分かるように変形してみる．行列$\bQ = (t_i t_j \bx_i^T \bx_j^T )_{ij} \in \mathbb{R}^{n \times n}$を導入すると
+\begin{align}
+L(\balpha) = \mathbf{1}^T \balpha - \frac{1}{2} \balpha^T \bQ \balpha
+\end{align}
+である．さらに$\bt = [t_1, \ldots, t_n]^T$と表記すると，式(9)の等式制約は$\balpha^T \bt = 0$と書ける．
+
+以上より，最適化問題は以下のように整理される．
+\begin{alignat}{2}
+& \mathrm{maximize} & \quad & \mathbf{1}^T \balpha - \frac{1}{2} \balpha^T \bQ \balpha \newline
+& \mathrm{subject\ to} & \quad & \balpha^T \bt = 0
+\end{alignat}
+
+等式制約については，ペナルティ法に基づいて$(\balpha^T \bt)^2 = \balpha^T (\bt \bt^T) \balpha$ [^sup1] を$L(\balpha)$に加えて$L_p(\balpha) = \mathbf{1}^T \balpha - \frac{1}{2} \balpha^T \bQ \balpha + \rho \balpha^T (\bt \bt^T) \balpha$とする．ここで$\rho > 0$はペナルティパラメータである．
+
+[^sup1]: $(\balpha^T \bt)^2 = (\sum_{i = 1}^n \alpha_i t_i)^2 = (\sum_{i = 1}^n \alpha_i t_i)(\sum_{i = j}^n \alpha_j t_j) = \sum_{i = 1}^n \sum_{j = 1}^n \alpha_i \alpha_j t_i t_j = \balpha^T (\bt \bt^T) \balpha$
+
+### 最急降下法による実装例
+
+最急降下法で$\balpha$を求めてみよう．$\frac{\partial L_p(\balpha)}{\partial \balpha}$は
+\begin{align}
+\frac{\partial L_p(\balpha)}{\partial \balpha} = \mathbf{1} - \bQ \balpha + 2 \rho (\bt \bt^T) \balpha
+\end{align}
+となるため，最急降下法による更新式は学習率を$\eta$とすると
+\begin{align}
+\balpha^{(t + 1)} = \balpha^{(t)} + \eta \frac{\partial L_p(\balpha)}{\partial \balpha} = \balpha^{(t)} + \eta \left( \mathbf{1} - \bQ \balpha + 2 \rho (\bt \bt^T) \balpha \right)
+\end{align}
+である．
+
+---
