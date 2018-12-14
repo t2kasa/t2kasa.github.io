@@ -6,6 +6,7 @@ tags: []
 ---
 
 \begin{align}
+\newcommand{\cS}{\mathcal{S}}
 \newcommand{\bt}{\mathbf{t}}
 \newcommand{\bx}{\mathbf{x}}
 \newcommand{\by}{\mathbf{y}}
@@ -86,6 +87,17 @@ g(\bx) = \bw^T \bx + b = \left(\sum_{i = 1}^n \alpha_i t_i \bx_i^T \right) \bx +
 \end{align}
 と変形される．
 
+上述のKKT条件において$\alpha_i > 0$に対応するサンプル$\bx_i$はサポートベクトルであり，$t_i g(\bx_i) = 1$を満たす．一方，$\alpha_i = 0$に対応するサンプルはサポートベクトルではない．$\balpha$が求まると，全てのサンプルの添字集合$\left\\{1, \ldots, n \right\\}$の部分集合としてサポートベクトルの添字集合$\cS$が得られる．$\cS$を用いると$g(\bx)$は
+\begin{align}
+g(\bx) = \sum_{i = 1}^n \alpha_i t_i \bx_i^T \bx + b = \sum_{u \in \cS} \alpha_u t_u \bx_u^T \bx + b
+\end{align}
+となる．$\\#\cS = n_{\cS}$とし，$\forall i \in \left\\{1, \ldots, n \right\\}, \; t_i^2 = 1$を用いると$b$を以下のようにして求めることができる．
+\begin{align}
+& \sum_{v \in \cS} t_v^2 g(\bx_v) = \sum_{v \in \cS} g(\bx_v) = \sum_{v \in \cS} t_v \left\\{ t_v g(\bx_v) \right\\} = \sum_{v \in \cS} t_v \newline
+& \sum_{v \in \cS} g(\bx_v) = \sum_{v \in \cS} \left( \sum_{u \in \cS} \alpha_u t_u \bx_u^T \bx_v + b \right) = \sum_{v \in \cS} \left( \sum_{u \in \cS} \alpha_u t_u \bx_u^T \bx_v \right) + n_{\cS} b \newline
+& \therefore b = \frac{1}{n_{\cS}} \sum_{v \in \cS} \left(t_v - \sum_{u \in \cS} \alpha_u t_u \bx_u^T \bx_v \right)
+\end{align}
+
 ---
 
 さて，以上でラグランジュ関数の導出は出来た．ここからは実際に最適化問題として解いてみよう．  
@@ -117,5 +129,6 @@ L(\balpha) = \mathbf{1}^T \balpha - \frac{1}{2} \balpha^T \bQ \balpha
 \balpha^{(t + 1)} = \balpha^{(t)} + \eta \frac{\partial L_p(\balpha)}{\partial \balpha} = \balpha^{(t)} + \eta \left( \mathbf{1} - \bQ \balpha + 2 \rho (\bt \bt^T) \balpha \right)
 \end{align}
 である．
+
 
 ---
