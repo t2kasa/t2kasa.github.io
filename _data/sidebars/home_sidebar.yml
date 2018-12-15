@@ -34,7 +34,7 @@ entries:
       url: partition.html
       output: web
 
-  - title: others
+  - title: notes
     output: web
     folderitems:
 
@@ -44,6 +44,10 @@ entries:
     
     - title: リプシッツ連続 (Lipschitz continuity)
       url: /lipschitz-continuity.html
+      output: web
+
+    - title: "ハードマージンSVM"
+      url: hard-margin-svm.html
       output: web
 
   - title: presentations

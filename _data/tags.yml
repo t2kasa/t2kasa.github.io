@@ -13,6 +13,7 @@ allowed-tags:
   - 二分探索
   - Adversarial Example
   - "Kernelized Stein Discrepancy"
+  - SVM
   # - getting_started
   # - content_types
   # - navigation
