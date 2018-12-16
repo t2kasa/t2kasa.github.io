@@ -1,5 +1,5 @@
 ---
-title: "Born-Again Neural Networks"
+title: Born-Again Neural Networks
 tags: [ICML2018, Knowledge Distillation]
 sidebar: home_sidebar
 permalink: born-again-neural-networks.html

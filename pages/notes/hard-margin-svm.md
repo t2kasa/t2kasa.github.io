@@ -1,5 +1,5 @@
 ---
-title: "ハードマージンSVM"
+title: ハードマージンSVM
 tags: [SVM]
 sidebar: home_sidebar
 permalink: hard-margin-svm.html
