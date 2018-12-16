@@ -54,11 +54,11 @@ i \in \left\\{1, \ldots, n \right\\}, \; t_i (\bw^T \bx_i + b) \geq 1
 
 ### ラグランジュ関数の導出
 
-ラグランジュの未定乗数法を用いる．ラグランジュ乗数$\balpha = [\alpha_1, \ldots, \alpha_n]^T \geq \mathbf{0} \; (i = 1, \ldots, n)$を導入するとラグランジュ関数$L(\bw, b, \balpha)$は
+ラグランジュの未定乗数法を用いる．ラグランジュ乗数$\balpha = [\alpha_1, \ldots, \alpha_n]^T \geq \mathbf{0}$を導入するとラグランジュ関数$L(\bw, b, \balpha)$は
 \begin{align}
 L(\bw, b, \balpha) = \frac{1}{2} \\|\bw\\|^2 - \sum_{i = 1}^n \alpha_i \left\\{t_i (\bw^T \bx_i + b) - 1 \right\\}
 \end{align}
-となる．$\bw, b$については最小化，$\balpha$については最大化することになる（詳しくは「ラグランジュ双対問題」などで検索）．ここでKKT条件により，以下が成り立つ．
+となる．$\bw, b$については最小化，$\balpha$については最大化することになる（詳しくは「ラグランジュ双対問題」などで検索）．$\frac{\partial L(\bw, b, \balpha)}{\partial \bw} = \mathbf{0}, \frac{\partial L(\bw, b, \balpha)}{\partial b} = 0$およびKKT条件により，以下が成り立つ．
 \begin{align}
 \frac{\partial L(\bw, b, \balpha)}{\partial \bw}
 =& \bw - \sum_{i = 1}^n \alpha_i t_i \bx_i = \mathbf{0} \quad \therefore \bw
