@@ -18,6 +18,10 @@ entries:
         url: 2018-11-11-monte-carlo-filter.html
         output: web
 
-      - title: "線形SVM"
+      - title: "SVM (1)"
         url: 2018-12-16-svm-part1.html
+        output: web
+
+      - title: "SVM (2)"
+        url: 2018-12-17-svm-part2.html
         output: web

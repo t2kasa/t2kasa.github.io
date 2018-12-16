@@ -87,3 +87,8 @@ L(\balpha) = \mathbf{1}^T \balpha - \frac{1}{2} \balpha^T \bQ \balpha
 & \mathrm{maximize} & \quad & \mathbf{1}^T \balpha - \frac{1}{2} \balpha^T \bQ \balpha \newline
 & \mathrm{subject\ to} & \quad & \balpha^T \bt = 0, \mathbf{0} \leq \balpha \leq C \mathbf{1}
 \end{alignat}
+
+### 参考文献
+
+* [パターン認識と機械学習 下](https://www.maruzen-publishing.co.jp/item/b294551.html)
+* [最適化と変分法](https://www.maruzen-publishing.co.jp/item/b294841.html)
