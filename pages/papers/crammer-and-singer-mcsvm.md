@@ -146,9 +146,9 @@ Q_p(\btau_p)
 \end{alignat}
 となる（符号を反転して最小化にしていることに注意）．この最適化問題を解く方法として不動点アルゴリズムによる方法が詳述されている．
 
-学習アルゴリズムは論文中の図2のように表現できる．
+学習アルゴリズムは以下の図2のように表現できる．
 
-![fig2](images/figs/crammer-and-singer-mcsvm/fig2.png)
+![fig2](images/figs/crammer-and-singer-mcsvm/fig2.png){:style="border: 1px solid black"}
 
 ### References
 
