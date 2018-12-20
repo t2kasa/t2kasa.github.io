@@ -1,6 +1,6 @@
 ---
 title: 分割数
-tags:
+tags: [アルゴリズムとデータ構造]
 sidebar: home_sidebar
 permalink: partition.html
 ---
