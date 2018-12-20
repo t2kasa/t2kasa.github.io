@@ -26,6 +26,10 @@ entries:
       url: fgsm.html
       output: web
 
+    - title: On the Algorithmic Implementation of Multiclass Kernel-based Vector Machines
+      url: crammer-and-singer-mcsvm.html
+      output: web
+
   - title: アルゴリズムとデータ構造
     output: web
     folderitems:
