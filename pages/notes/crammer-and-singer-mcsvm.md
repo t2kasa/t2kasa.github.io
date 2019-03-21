@@ -1,5 +1,5 @@
 ---
-title: On the Algorithmic Implementation of Multiclass Kernel-based Vector Machines
+title: On the Algorithmic Implementation of Multiclass Kernel-based Vector Machines (JMLR2001)
 tags: [SVM]
 sidebar: home_sidebar
 permalink: crammer-and-singer-mcsvm.html

@@ -55,6 +55,6 @@ entries:
     - title: ソフトマージンSVM
       url: soft-margin-svm.html
       output: web
-    - title: On the Algorithmic Implementation of Multiclass Kernel-based Vector Machines
+    - title: On the Algorithmic Implementation of Multiclass Kernel-based Vector Machines (JMLR2001)
       url: crammer-and-singer-mcsvm.html
       output: web
