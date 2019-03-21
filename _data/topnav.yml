@@ -5,5 +5,7 @@ topnav:
   items:
     - title: Blog
       url: /blog
+    - title: Profile
+      url: /profile.html
     - title: GitHub
       external_url: https://github.com/t2kasa
