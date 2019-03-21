@@ -127,8 +127,6 @@ H_{\bW}(\bx) = \argmax_{\gamma \in \cY} \bw_{\gamma}^T \bx = \argmax_{\gamma \in
 \end{align}
 と表現できる．
 
--->
-
 ### 最適化問題の分解
 
 得られた双対問題は凸二次計画問題となっているが，$mk$個の変数があるため，そのまま解くには$mk \times mk$という非常に大きな行列が必要になってしまう．そこで，本論文では以下の方法によって小さな問題に分解することで効率的に解くことを考える．
@@ -148,7 +146,7 @@ Q_p(\btau_p)
 
 学習アルゴリズムは以下の図2のように表現できる．
 
-![fig2](images/figs/crammer-and-singer-mcsvm/fig2.png){:style="border: 1px solid black"}
+![fig2](images/crammer-and-singer-mcsvm/fig2.png){:style="border: 1px solid black"}
 
 ### References
 
