@@ -36,7 +36,7 @@ permalink: soft-margin-svm.html
 
 直感的な理解を得るために$\xi_i$を図示してみる．あるサンプル$\bx_i$のラベルが$t_i = 1$としよう．このとき，$t_i g(\bx_i) \geq 1$となっていれば，マージン境界の外側に位置するためにペナルティを払う必要はないと考えられるので$\xi_i = 0$として良い．しかし下図のように$t_i g(\bx_i) < 1$の場合はマージン境界の内側に位置していることになる．このとき，本来位置してほしいマージン境界までの距離は$\|t_i - g(\bx_i)\|$である．つまり$t_i g(\bx_i) + \|t_i - g(\bx_i)\| = 1$が成り立つ．よって$\xi_i = \|t_i - g(\bx_i)\|$とすることでマージン境界の内側に位置するサンプルであっても$t_i g(\bx_i) + \xi_i = 1$とできるため，全てのサンプルについて$t_i g(\bx_i) + \xi_i \geq 1$である．
 
-![soft-margin-svm](images/figs/soft-margin-svm/soft-margin-svm.png)
+![soft-margin-svm](images/soft-margin-svm/soft-margin-svm.png)
 
 $\xi_i$は$\bx_i$がマージン境界の内側にある場合，本来位置してほしいマージン境界までの距離となっているということだったので，その総和$\sum_{i = 1}^n \xi_i$が小さいほうが望ましいということになる．これを踏まえると，不等式制約$t_i g(\bx_i) + \xi_i \geq 1$と$\xi_i \geq 0$を持つ以下の最適化問題を解けば良いということになる．
 \begin{align}
