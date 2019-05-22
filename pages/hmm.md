@@ -43,17 +43,6 @@ HMMのEMアルゴリズムによる最尤推定について述べる．
 - $p(\b{x} \| \b{z})$のパラメータ：$\bo{\phi} = \left\\{ \bo{\phi}\_1, \ldots, \bo{\phi}_K \right\\}$
 - パラメータ集合：$\bo{\theta} = \left\\{ \bo{\pi}, \b{A}, \bo{\phi} \right\\}$
 
-<!-- $\b{x}\_1, \ldots, \b{x}\_N$の同時確率$p(\b{x}\_1, \ldots, \b{x}\_N)$を一次マルコフ性を用いながら分解する．
-\begin{align}
-p(\b{x}\_{1:N}) 
-&= p(\b{x}\_{2:N}, \b{x}\_1) \newline
-&= p(\b{x}\_{2:N} | \b{x}\_1) p(\b{x}\_1) \newline
-&= p(\b{x}\_{3:N}, \b{x}\_2 | \b{x}\_1) p(\b{x}\_1) \newline
-&= p(\b{x}\_{3:N} | \b{x}\_2, \b{x}\_1) p(\b{x}\_2 | \b{x}\_1) p(\b{x}\_1) \newline
-&= p(\b{x}\_{3:N} | \b{x}\_2) p(\b{x}\_2 | \b{x}\_1) p(\b{x}\_1) \newline
-&= p(\b{x}\_1) \prod_{n = 2}^N p(\b{x}\_{n} | \b{x}\_{n - 1})
-\end{align} -->
-
 潜在変数は離散変数だとしている．遷移確率は
 \begin{align}
 A_{jk} = p(z_{nk} = 1) | z_{n - 1, j} = 1)
