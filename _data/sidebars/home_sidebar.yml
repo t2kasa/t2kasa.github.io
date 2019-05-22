@@ -58,3 +58,10 @@ entries:
     - title: On the Algorithmic Implementation of Multiclass Kernel-based Vector Machines (JMLR2001)
       url: crammer-and-singer-mcsvm.html
       output: web
+
+  - title: miscs
+    output: web
+    folderitems:
+    - title: HMMのEMアルゴリズムによる最尤推定
+      url: hmm.html
+      output: web    
