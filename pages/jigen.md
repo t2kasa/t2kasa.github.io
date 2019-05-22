@@ -35,5 +35,5 @@
 ## この後読むべき論文
 
 - self-supervised learning related papers
-    - [36]
+    - [36] Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles (ECCV2016) [Arxiv](https://arxiv.org/abs/1603.09246)
     - [38]
