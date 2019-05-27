@@ -24,6 +24,8 @@ permalink: hmm.html
 \newcommand{\bSigma}{\boldsymbol{\Sigma}} \nonumber
 \end{align}
 
+<!--
+
 TODO: グラフィカルモデルの図を追加．
 
 HMMのEMアルゴリズムによる最尤推定について述べる．
@@ -104,6 +106,8 @@ Q(\bo{\theta}, \bo{\theta}^{\old})
 
 となる．
 
+$\gamma (z_{1k}), \gamma (z_{nk}), \xi (z_{n - 1, j}, z_{nk})$を求める必要があるが，これは後述するforward-backwardアルゴリズムあるいはBaum-Welchアルゴリズムによって求める．
+
 ### Mステップ
 
 Mステップでは，$\gamma(\b{z}\_n)$と$\xi(\b{z}\_{n - 1}, \b{z}\_n)$を定数とみなして，パラメータ$\bo{\theta}$について$Q(\bo{\theta}, \bo{\theta}^{\old})$を最大化する．これは，以下の制約付き最適化問題とみなすことができる．
@@ -165,3 +169,62 @@ A_{jk} = \frac{\sum_{n = 2}^N \xi(z\_{n - 1, j}, z\_{nk})}{\sum_{l = 1}^K \sum_{
 \bo{\Sigma}\_k &= \frac{\sum\_{n = 1}^N \gamma (z_{nk}) (\b{x}\_n - \bo{\mu}\_k) (\b{x}\_n - \bo{\mu}\_k)^T }{\sum\_{n = 1}^N \gamma (z_{nk})}
 \end{align}
 である．
+
+-->
+
+## Baum-Welchアルゴリズム
+### 条件付き独立性
+
+Baum-Welchアルゴリズムの導出過程で必要となる条件付き独立性の式を示す．ここではPRMLの1つ目の条件付き独立性のみ示しておく．
+
+![fig1](data/hmm/fig1.png)
+
+$\b{x}\_{1:n}$から$\b{x}\_{n + 1:N}$への経路は$\b{z}\_{n}$によって遮断されている．よって条件付き独立性により$p(\b{x}\_{1:N} \| \b{z}\_n) = p(\b{x}\_{1:n} \| \b{z}\_n) p(\b{x}\_{n + 1:N} \| \b{z}\_n)$が成り立つ．
+
+他の条件付き独立性は以下の通り．
+- $p(\b{x}\_{1:n - 1} \| \b{x}\_n, \b{z}\_n) = p(\b{x}\_{1:n - 1} \| \b{z}\_n)$
+- $p(\b{x}\_{1:n - 1} \| \b{z}\_{n - 1}, \b{z}\_n) = p(\b{x}\_{1:n - 1} \| \b{z}\_{n - 1})$
+- $p(\b{x}\_{n + 1:N} \| \b{z}\_n, \b{z}\_{n + 1}) = p(\b{x}\_{n + 1:N} \| \b{z}\_{n + 1})$
+- $p(\b{x}\_{n + 2:N} \| \b{z}\_{n + 1}, \b{x}\_{n + 1}) = p(\b{x}\_{n + 2:N} \| \b{z}\_{n + 1})$
+- $p(\b{x}\_{1:N} \| \b{z}\_{n - 1}, \b{z}\_n) = p(\b{x}\_{1:n - 1} \| \b{z}\_{n - 1}) p(\b{x}\_n \| \b{z}\_n) p(\b{x}\_{n + 1:N} \| \b{z}\_n)$
+- $p(\b{x}_{N + 1} \| \b{x}\_{1:N}, \b{z}\_{N + 1}) = p(\b{x}\_{N + 1} \| \b{z}\_{N + 1})$
+- $p(\b{z}_{N + 1} \| \b{z}\_N, \b{x}\_{1:N}) = p(\b{z}\_{N + 1} \| \b{z}\_N)$
+
+---
+
+<!-- \newcommand{\b}[1]{\mathbf{#1}}
+\newcommand{\bo}[1]{\boldsymbol{#1}} -->
+
+$\alpha(\b{z}\_n) := p(\b{x}\_{1:n}, \b{z}\_n), \beta(\b{z}\_n) := p(\b{x}\_{n + 1:N} \| \b{z}\_n)$と定義すると，
+
+\begin{align}
+\gamma(\b{z}\_n) 
+&= p(\b{z}\_n | \b{x}\_{1:N}) = \frac{p(\b{z}\_n, \b{x}\_{1:N})}{p(\b{x}\_{1:N})}
+= \frac{p(\b{x}\_{1:N} | \b{z}\_n) p(\b{z}\_n)}{p(\b{x}\_{1:N})}
+= \frac{p(\b{x}\_{1:n} | \b{z}\_n) p(\b{x}\_{n + 1:N} | \b{z}\_n) p(\b{z}\_n)}{p(\b{x}\_{1:N})} \newline
+&= \frac{\overbrace{p(\b{x}\_{1:n}, \b{z}\_n)}^{= \alpha(\b{z}\_n)} \overbrace{ p(\b{x}\_{n + 1:N} | \b{z}\_n)}^{= \beta(\b{z}\_n)} }{p(\b{x}\_{1:N})} = \frac{\alpha(\b{z}\_n) \beta(\b{z}\_n)}{p(\b{x}\_{1:N})}
+\end{align}
+
+である．さらに$\alpha, \beta$について再帰式を導出する．
+
+\begin{align}
+\alpha(\b{z}\_n) 
+&= p(\b{x}\_{1:n},  \b{z}\_n) = p(\b{x}\_{1:n} | \b{z}\_n) p(\b{z_n})
+= p(\b{x}\_n | \b{z}\_n) \underbrace{p(\b{x}\_{1:n - 1} | \b{x}\_n, \b{z}\_n)}_{= p(\b{x}\_{1:n - 1} | \b{z}\_n)} p(\b{z}_n)
+= p(\b{x}\_n | \b{z}\_n) p(\b{x}\_{1:n - 1} | \b{z}\_n) p(\b{z}\_n) \newline
+&= p(\b{x}\_n | \b{z}\_n) p(\b{x}\_{1:n - 1}, \b{z}\_n)
+= p(\b{x}\_n | \b{z}\_n) \sum\_{\b{z}\_{n - 1}} p(\b{x}\_{1:n - 1}, \b{z}\_n, \b{z}\_{n - 1})
+= p(\b{x}\_n | \b{z}\_n) \sum\_{\b{z}\_{n - 1}} p(\b{x}\_{1:n - 1}, \b{z}\_n, \b{z}\_{n - 1}) \newline
+&= p(\b{x}\_n | \b{z}\_n) \sum\_{\b{z}\_{n - 1}} p(\b{x}\_{1:n - 1}, \b{z}\_n | \b{z}\_{n - 1}) p(\b{z}\_{n - 1})
+= p(\b{x}\_n | \b{z}\_n) \sum\_{\b{z}\_{n - 1}} \underbrace{p(\b{x}\_{1:n - 1}, | \b{z}\_n, \b{z}\_{n - 1})}\_{= p(\b{x}\_{1:n - 1}, | \b{z}\_{n - 1})} p(\b{z}\_n | \b{z}\_{n - 1}) p(\b{z}\_{n - 1}) \newline
+&= p(\b{x}\_n | \b{z}\_n) \sum\_{\b{z}\_{n - 1}} p(\b{x}\_{1:n - 1}, | \b{z}\_{n - 1}) p(\b{z}\_n | \b{z}\_{n - 1}) p(\b{z}\_{n - 1}) \newline
+&= p(\b{x}\_n | \b{z}\_n) \sum\_{\b{z}\_{n - 1}} \underbrace{p(\b{x}\_{1:n - 1}, \b{z}\_{n - 1})}\_{= \alpha(\b{z}\_{n - 1})} p(\b{z}\_n | \b{z}\_{n - 1})
+= p(\b{x}\_n | \b{z}\_n) \sum\_{\b{z}\_{n - 1}} \alpha(\b{z}\_{n - 1}) p(\b{z}\_n | \b{z}\_{n - 1})
+\end{align}
+
+したがって，$\alpha$について再帰的な式を得る．
+\begin{align}
+\alpha(\b{z}\_n) = p(\b{x}\_n | \b{z}\_n) \sum\_{\b{z}\_{n - 1}} \alpha(\b{z}\_{n - 1}) p(\b{z}\_n | \b{z}\_{n - 1})
+\end{align}
+
+---
