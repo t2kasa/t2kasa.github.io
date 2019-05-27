@@ -192,9 +192,6 @@ $\b{x}\_{1:n}$から$\b{x}\_{n + 1:N}$への経路は$\b{z}\_{n}$によって遮
 
 ---
 
-<!-- \newcommand{\b}[1]{\mathbf{#1}}
-\newcommand{\bo}[1]{\boldsymbol{#1}} -->
-
 $\alpha(\b{z}\_n) := p(\b{x}\_{1:n}, \b{z}\_n), \beta(\b{z}\_n) := p(\b{x}\_{n + 1:N} \| \b{z}\_n)$と定義すると，
 
 \begin{align}
@@ -227,4 +224,41 @@ $\alpha(\b{z}\_n) := p(\b{x}\_{1:n}, \b{z}\_n), \beta(\b{z}\_n) := p(\b{x}\_{n +
 \alpha(\b{z}\_n) = p(\b{x}\_n | \b{z}\_n) \sum\_{\b{z}\_{n - 1}} \alpha(\b{z}\_{n - 1}) p(\b{z}\_n | \b{z}\_{n - 1})
 \end{align}
 
+$\beta$については
+
+**TODO: $\beta$についての再帰式の導出を追加する**
+
+$$
+\newcommand{\b}[1]{\mathbf{#1}}
+\newcommand{\bo}[1]{\boldsymbol{#1}}
+\beta(\b{z}_n) = p(\b{x}_{n + 1:N} | \b{z}_n)
+= \sum_{\b{z}_{n + 1}} p(\b{x}_{n + 1:N}, \b{z}_{n + 1} | \b{z}_n)
+= \sum_{\b{z}_{n + 1}} \underbrace{ p(\b{x}_{n + 1:N} | \b{z}_{n + 1}, \b{z}_n)}_{= p(\b{x}_{n + 1:N} | \b{z}_{n + 1})} p(\b{z}_{n + 1} | \b{z}_n)
+= \sum_{\b{z}_{n + 1}} p(\b{x}_{n + 1:N} | \b{z}_{n + 1}) p(\b{z}_{n + 1} | \b{z}_n) \newline
+= \sum_{\b{z}_{n + 1}} \underbrace{p(\b{x}_{n + 2:N} | \b{z}_{n + 1})}_{= \beta(\b{z}_{n + 1})} p(\b{x}_{n + 1} | \b{z}_{n + 1}) p(\b{z}_{n + 1} | \b{z}_n)
+= \sum_{\b{z}_{n + 1}} \beta(\b{z}_{n + 1}) p(\b{x}_{n + 1} | \b{z}_{n + 1}) p(\b{z}_{n + 1} | \b{z}_n)
+$$
+
+$$
+\newcommand{\b}[1]{\mathbf{#1}}
+\newcommand{\bo}[1]{\boldsymbol{#1}}
+\gamma(\b{z}_N) = p(\b{z}_N | \b{x}_{1:N}) = \frac{\overbrace{\alpha(\b{z}_N)}^{= p(\b{x}_{1:N}, \b{z}_N)} \beta(\b{z}_N)}{p(\b{x}_{1:N})} = \frac{p(\b{x}_{1:N}, \b{z}_N) \beta(\b{z}_N)}{p(\b{x}_{1:N})}
+= p(\b{z}_N | \b{x}_{1:N}) \beta(\b{z}_N)
+$$
+となるので，$\beta(\b{z}_N) = 1$である．
+
 ---
+
+実装用の変形．対数をとった形で求める．
+
+<!-- \newcommand{\b}[1]{\mathbf{#1}}
+\newcommand{\bo}[1]{\boldsymbol{#1}} -->
+$$
+\newcommand{\b}[1]{\mathbf{#1}}
+\newcommand{\bo}[1]{\boldsymbol{#1}}
+\log \alpha(\b{z}_n) 
+= \log p(\b{x}_n | \b{z}_n) + \log \left\{ \sum_{\b{z}_{n - 1}} \alpha(\b{z}_{n - 1}) p(\b{z}_n | \b{z}_{n - 1}) \right\} \newline
+= \log p(\b{x}_n | \b{z}_n) + \log \left\{ \sum_{\b{z}_{n - 1}} \exp \left( \log \left( \alpha(\b{z}_{n - 1}) p(\b{z}_n | \b{z}_{n - 1}) \right) \right) \right\} \newline
+= \log p(\b{x}_n | \b{z}_n) + \log \left\{ \sum_{\b{z}_{n - 1}} \exp \left( \log \alpha(\b{z}_{n - 1}) + \log p(\b{z}_n | \b{z}_{n - 1}) \right) \right\}
+$$
+
