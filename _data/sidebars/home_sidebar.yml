@@ -65,3 +65,7 @@ entries:
     - title: HMMのEMアルゴリズムによる最尤推定
       url: hmm.html
       output: web    
+    
+    - title: Weighted K-means
+      url: weighted-k-means.html
+      output: web    
