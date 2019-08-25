@@ -30,6 +30,10 @@ entries:
       url: im-algorithm.html
       output: web
 
+    - title: "Adversarial Variational Bayes: Unifying Variational Autoencoders and Generative Adversarial Networks (ICML2017)"
+      url: avb.html
+      output: web
+
   - title: アルゴリズムとデータ構造
     output: web
     folderitems:
@@ -73,3 +77,7 @@ entries:
     - title: Weighted K-means
       url: weighted-k-means.html
       output: web    
+    
+    - title: PCA
+      url: pca.html
+      output: web
