@@ -27,5 +27,5 @@ entries:
         output: web
 
       - title: "Binomial-Beta-Poissonでギブスサンプリング"
-        url: 2019-12-14-gibbs.html
+        url: 2019-12-14-binomial-beta-poisson-gibbs.html
         output: web
