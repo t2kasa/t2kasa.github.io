@@ -29,3 +29,7 @@ entries:
       - title: "Binomial-Beta-Poissonでギブスサンプリング"
         url: 2019-12-14-binomial-beta-poisson-gibbs.html
         output: web
+      
+      - title: "ポアソン混合分布でギブスサンプリング"
+        url: 2019-12-27-poisson-mixture-gibbs.html
+        output: web
