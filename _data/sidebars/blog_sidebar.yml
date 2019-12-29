@@ -37,3 +37,7 @@ entries:
       - title: "ポアソン混合分布で変分推論"
         url: 2019-12-28-poisson-mixture-vi.html
         output: web
+
+      - title: "ポアソン混合分布で崩壊型ギブスサンプリング"
+        url: 2019-12-30-poisson-mixture-collapsed-gibbs.html
+        output: web
