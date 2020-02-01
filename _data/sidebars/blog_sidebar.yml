@@ -45,3 +45,7 @@ entries:
       - title: "ガウス混合モデルでギブスサンプリング"
         url: 2020-02-01-gmm-gibbs.html
         output: web
+
+      - title: "ガウス混合モデルで変分推論"
+        url: 2020-02-02-gmm-vi.html
+        output: web
