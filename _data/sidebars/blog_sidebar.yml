@@ -41,3 +41,7 @@ entries:
       - title: "ポアソン混合分布で崩壊型ギブスサンプリング"
         url: 2019-12-30-poisson-mixture-collapsed-gibbs.html
         output: web
+
+      - title: "ガウス混合モデルでギブスサンプリング"
+        url: 2020-02-01-gmm-gibbs.html
+        output: web
