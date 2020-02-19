@@ -49,3 +49,11 @@ entries:
       - title: "ガウス混合モデルで変分推論"
         url: 2020-02-02-gmm-vi.html
         output: web
+
+      - title: "LDAで変分推論"
+        url: 2020-02-20-lda-vi.html
+        output: web
+
+      - title: "LDAで崩壊型ギブスサンプリング"
+        url: 2020-02-21-lda-collapsed-gibbs.html
+        output: web
