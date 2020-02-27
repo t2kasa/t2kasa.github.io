@@ -57,3 +57,7 @@ entries:
       - title: "LDAで崩壊型ギブスサンプリング"
         url: 2020-02-21-lda-collapsed-gibbs.html
         output: web
+
+      - title: "ロジスティック回帰で変分推論"
+        url: 2020-02-28-logistic-regression-vi.html
+        output: web
